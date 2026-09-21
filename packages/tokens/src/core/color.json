@@ -1,0 +1,26 @@
+{
+  "color": {
+    "core": {
+      "$description": "Raw palette. Placeholder values — replace from Figma (Core > Colors).",
+      "neutral": {
+        "0": {
+          "$type": "color",
+          "$value": "#ffffff",
+          "$description": "placeholder — replace from Figma"
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#000000",
+          "$description": "placeholder — replace from Figma"
+        }
+      },
+      "brand": {
+        "500": {
+          "$type": "color",
+          "$value": "#808080",
+          "$description": "placeholder — replace from Figma"
+        }
+      }
+    }
+  }
+}

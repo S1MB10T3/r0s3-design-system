@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        font:
+          12px/1.4 Inter,
+          system-ui,
+          sans-serif;
+      }
+      body {
+        margin: 0;
+        padding: 16px;
+        background: var(--figma-color-bg, #fff);
+        color: var(--figma-color-text, #111);
+      }
+      h1 {
+        font-size: 13px;
+        margin: 0 0 4px;
+      }
+      p {
+        margin: 0 0 12px;
+        color: var(--figma-color-text-secondary, #666);
+      }
+      section {
+        border: 1px solid var(--figma-color-border, #e5e5e5);
+        border-radius: 6px;
+        padding: 12px;
+        margin-bottom: 12px;
+      }
+      button {
+        font: inherit;
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--figma-color-border, #ccc);
+        background: var(--figma-color-bg-brand, #0d99ff);
+        color: var(--figma-color-text-onbrand, #fff);
+        cursor: pointer;
+      }
+      button.secondary {
+        background: transparent;
+        color: inherit;
+      }
+      input[type='file'] {
+        display: block;
+        margin-bottom: 8px;
+      }
+      pre {
+        font:
+          11px/1.4 ui-monospace,
+          monospace;
+        white-space: pre-wrap;
+        max-height: 120px;
+        overflow: auto;
+        margin: 0;
+        color: var(--figma-color-text-secondary, #666);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tokens</h1>
+    <p>Round-trip Figma Variables and the repo's DTCG JSON.</p>
+
+    <section>
+      <h1>Export</h1>
+      <p>
+        Reads the Core and Semantic collections and downloads a bundle for
+        <code>scripts/split-figma-export.mjs</code>.
+      </p>
+      <button id="export">Export tokens</button>
+    </section>
+
+    <section>
+      <h1>Import</h1>
+      <p>Pick a bundle (the same shape the export produces) to create or update variables.</p>
+      <input id="file" type="file" accept="application/json" />
+      <button id="import" class="secondary" disabled>Import tokens</button>
+    </section>
+
+    <pre id="log"></pre>
+
+    <script>
+      const log = document.getElementById('log');
+      const say = (text) => (log.textContent = text);
+      let pending = null;
+
+      document.getElementById('export').onclick = () => {
+        say('Exporting…');
+        parent.postMessage({ pluginMessage: { type: 'export' } }, '*');
+      };
+
+      document.getElementById('file').onchange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        try {
+          pending = JSON.parse(await file.text());
+          document.getElementById('import').disabled = false;
+          say(`Loaded ${file.name}: ${Object.keys(pending).join(', ')}`);
+        } catch (err) {
+          pending = null;
+          say(`Could not parse ${file.name}: ${err.message}`);
+        }
+      };
+
+      document.getElementById('import').onclick = () => {
+        if (!pending) return;
+        say('Importing…');
+        parent.postMessage({ pluginMessage: { type: 'import', bundle: pending } }, '*');
+      };
+
+      window.onmessage = (event) => {
+        const msg = event.data.pluginMessage;
+        if (!msg) return;
+        if (msg.type === 'export-result') {
+          const blob = new Blob([msg.json], { type: 'application/json' });
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = msg.filename;
+          a.click();
+          URL.revokeObjectURL(a.href);
+          say([`Exported ${msg.count} tokens.`, ...msg.warnings].join('\n'));
+        } else if (msg.type === 'import-result') {
+          say([`Created ${msg.created}, updated ${msg.updated}.`, ...msg.warnings].join('\n'));
+        } else if (msg.type === 'error') {
+          say(`Error: ${msg.message}`);
+        }
+      };
+    </script>
+  </body>
+</html>

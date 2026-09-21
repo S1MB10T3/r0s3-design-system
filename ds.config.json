@@ -1,0 +1,18 @@
+{
+  "$comment": "Single place for the system's name. Every generated output reads from here; see README > Renaming for the few hand-written spots.",
+  "name": "r0s3",
+  "displayName": "R0S3 Design System",
+  "cssPrefix": "",
+  "swift": {
+    "namespace": "R0s3",
+    "module": "R0s3DesignSystem"
+  },
+  "figma": {
+    "coreCollection": "Core",
+    "semanticCollection": "Semantic",
+    "modes": {
+      "light": "Light",
+      "dark": "Dark"
+    }
+  }
+}

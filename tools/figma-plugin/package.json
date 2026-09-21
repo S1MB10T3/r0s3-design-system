@@ -1,0 +1,20 @@
+{
+  "name": "@r0s3/figma-plugin",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Figma plugin: export Figma Variables to this repo's DTCG token JSON, and import them back",
+  "license": "CC0-1.0",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/code.ts --bundle --outfile=dist/code.js --format=iife --target=es2017",
+    "watch": "npm run build -- --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test test/*.test.ts"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.100.0",
+    "@types/node": "^22.20.4",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.6.0"
+  }
+}

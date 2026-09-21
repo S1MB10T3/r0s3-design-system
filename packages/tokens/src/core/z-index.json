@@ -1,0 +1,10 @@
+{
+  "z": {
+    "$description": "Stacking order. Web-only in practice; harmless on iOS.",
+    "overlay": {
+      "$type": "number",
+      "$value": 10,
+      "$description": "placeholder — replace from Figma"
+    }
+  }
+}

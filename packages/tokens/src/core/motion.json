@@ -1,0 +1,18 @@
+{
+  "duration": {
+    "$description": "Animation durations. Placeholder values — replace from Figma (Core > Motion).",
+    "hover": {
+      "$type": "duration",
+      "$value": "200ms",
+      "$description": "placeholder — replace from Figma"
+    }
+  },
+  "ease": {
+    "$description": "Easing curves as cubic-bezier control points.",
+    "brand": {
+      "$type": "cubicBezier",
+      "$value": [0.4, 0, 0.2, 1],
+      "$description": "placeholder — replace from Figma"
+    }
+  }
+}
