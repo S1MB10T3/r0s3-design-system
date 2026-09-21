@@ -1,0 +1,26 @@
+{
+  "name": "r0s3-design-system",
+  "private": true,
+  "description": "Design tokens and platform outputs for r0s3.me and project-mue",
+  "license": "CC0-1.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "packages/*",
+    "tools/*"
+  ],
+  "scripts": {
+    "build": "npm run build:tokens && npm run build:plugin",
+    "build:tokens": "npm run build -w @r0s3/tokens",
+    "build:plugin": "npm run build -w @r0s3/figma-plugin",
+    "typecheck": "npm run typecheck -w @r0s3/figma-plugin",
+    "test": "npm run test -w @r0s3/figma-plugin",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run typecheck && npm run test && npm run build && git diff --exit-code -- packages/tokens/dist Sources/R0s3DesignSystem/Generated"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}

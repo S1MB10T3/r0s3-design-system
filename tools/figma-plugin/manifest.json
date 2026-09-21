@@ -1,0 +1,12 @@
+{
+  "name": "R0S3 Tokens",
+  "id": "r0s3-design-system-tokens",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "src/ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  }
+}

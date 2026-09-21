@@ -1,0 +1,8 @@
+{
+  "color": {
+    "$description": "Semantic color roles for the Dark mode. Must define the same keys as light.json.",
+    "bg": { "$type": "color", "$value": "{color.core.neutral.1000}" },
+    "ink": { "$type": "color", "$value": "{color.core.neutral.0}" },
+    "accent": { "$type": "color", "$value": "{color.core.brand.500}" }
+  }
+}

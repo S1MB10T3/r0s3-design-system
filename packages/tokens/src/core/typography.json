@@ -1,0 +1,53 @@
+{
+  "font": {
+    "$description": "Type primitives. Font files are NOT shipped in this repo; consumers host them. Placeholder values — replace from Figma (Core > Typography).",
+    "family": {
+      "body": {
+        "$type": "fontFamily",
+        "$value": ["Placeholder Body", "ui-monospace", "monospace"],
+        "$description": "placeholder — replace from Figma"
+      },
+      "label": {
+        "$type": "fontFamily",
+        "$value": ["Placeholder Label", "ui-monospace", "monospace"],
+        "$description": "placeholder — replace from Figma"
+      }
+    },
+    "size": {
+      "body": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$description": "placeholder — replace from Figma"
+      },
+      "caption": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$description": "placeholder — replace from Figma"
+      }
+    },
+    "weight": {
+      "body": {
+        "$type": "fontWeight",
+        "$value": 400,
+        "$description": "placeholder — replace from Figma"
+      },
+      "body-bold": {
+        "$type": "fontWeight",
+        "$value": 700,
+        "$description": "placeholder — replace from Figma"
+      }
+    },
+    "line-height": {
+      "body": {
+        "$type": "number",
+        "$value": 1.2,
+        "$description": "placeholder — replace from Figma"
+      },
+      "tight": {
+        "$type": "number",
+        "$value": 1,
+        "$description": "placeholder — replace from Figma"
+      }
+    }
+  }
+}

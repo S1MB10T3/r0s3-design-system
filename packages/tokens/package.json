@@ -1,0 +1,23 @@
+{
+  "name": "@r0s3/tokens",
+  "version": "0.0.1",
+  "description": "Design tokens (DTCG JSON) and generated CSS/JSON outputs",
+  "license": "CC0-1.0",
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": "./dist/json/tokens.json",
+    "./css": "./dist/css/tokens.css",
+    "./json": "./dist/json/tokens.json",
+    "./src/*": "./src/*"
+  },
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.3.0"
+  }
+}

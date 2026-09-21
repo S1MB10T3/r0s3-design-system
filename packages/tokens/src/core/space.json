@@ -1,0 +1,15 @@
+{
+  "space": {
+    "$description": "Spacing scale in px. Placeholder values — replace from Figma (Core > Space).",
+    "1": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "placeholder — replace from Figma"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$description": "placeholder — replace from Figma"
+    }
+  }
+}

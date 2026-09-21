@@ -1,0 +1,15 @@
+{
+  "radius": {
+    "$description": "Corner radii in px. Placeholder values — replace from Figma (Core > Radius).",
+    "sm": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "placeholder — replace from Figma"
+    },
+    "circle": {
+      "$type": "dimension",
+      "$value": "999px",
+      "$description": "placeholder — replace from Figma"
+    }
+  }
+}

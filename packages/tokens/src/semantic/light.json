@@ -1,0 +1,8 @@
+{
+  "color": {
+    "$description": "Semantic color roles for the Light mode. Aliases into color.core only.",
+    "bg": { "$type": "color", "$value": "{color.core.neutral.0}" },
+    "ink": { "$type": "color", "$value": "{color.core.neutral.1000}" },
+    "accent": { "$type": "color", "$value": "{color.core.brand.500}" }
+  }
+}

@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Figma plugin bundle (rebuilt with `npm run build:plugin`)
+tools/figma-plugin/dist/
+
+# Swift
+.build/
+.swiftpm/
+*.xcodeproj
+xcuserdata/
+
+# Font binaries are never committed (see README)
+fonts/
+*.woff
+*.woff2
+*.otf
+*.ttf
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.log
