@@ -10,8 +10,8 @@
   --radius-circle: 999px; /** placeholder — replace from Figma */
   --space-1: 0.25rem; /** placeholder — replace from Figma */
   --space-2: 0.5rem; /** placeholder — replace from Figma */
-  --font-family-body: "Placeholder Body", "ui-monospace", monospace; /** placeholder — replace from Figma */
-  --font-family-label: "Placeholder Label", "ui-monospace", monospace; /** placeholder — replace from Figma */
+  --font-family-body: "Placeholder Body", ui-monospace, monospace; /** placeholder — replace from Figma */
+  --font-family-label: "Placeholder Label", ui-monospace, monospace; /** placeholder — replace from Figma */
   --font-size-body: 1rem; /** placeholder — replace from Figma */
   --font-size-caption: 0.75rem; /** placeholder — replace from Figma */
   --font-weight-body: 400; /** placeholder — replace from Figma */

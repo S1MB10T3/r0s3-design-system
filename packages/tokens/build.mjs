@@ -52,7 +52,11 @@ StyleDictionary.registerTransform({
   filter: (token) => token.$type === 'fontFamily',
   transform: (token) => {
     const families = Array.isArray(token.$value) ? token.$value : [token.$value];
-    return families.map((f) => (/[\s-]/.test(f) ? `"${f}"` : f)).join(', ');
+    // Quote only names that are not valid CSS identifiers. Generic families
+    // such as ui-monospace or sans-serif must stay bare, or the browser looks
+    // for a font literally named that instead of using the generic keyword.
+    const isIdent = (f) => /^-?[A-Za-z_][\w-]*$/.test(f);
+    return families.map((f) => (isIdent(f) ? f : `"${f}"`)).join(', ');
   },
 });
 
@@ -347,7 +351,11 @@ function emitNode(tree, depth) {
     if (value.__token) {
       const t = value.__token;
       const { type, expr } = swiftValue(t);
-      if (t.$description) lines.push(`${pad}/// ${t.$description}`);
+      // One doc-comment line per line of description, so a multiline
+      // description (common in Figma) cannot escape the comment.
+      for (const line of String(t.$description ?? '').split(/\r?\n/)) {
+        if (line.trim()) lines.push(`${pad}/// ${line.trim()}`);
+      }
       lines.push(`${pad}public static let ${swiftIdent(key)}: ${type} = ${expr}`);
     } else {
       lines.push(`${pad}public enum ${swiftEnumName(key)} {`);
